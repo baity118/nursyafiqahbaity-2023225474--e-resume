@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Personal Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+
+:root{
+  --dark-blue: #0A1A2F;
+  --med-blue: #102542;
+  --accent: #4EA1FF;
+  --muted: #6B7280;
+  --white: #ffffff;
+  --glass: rgba(255,255,255,0.85);
+}
+
+
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+  margin:0;
+  font-family: "Poppins", Arial, sans-serif;
+  background: linear-gradient(180deg, #F7FBFF 0%, #ffffff 50%);
+  color:var(--dark-blue);
+  -webkit-font-smoothing:antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+
+.container {
+  display:flex;
+  min-height:100vh;
+}
+
+
+.sidebar {
+  width:260px;
+  background: linear-gradient(180deg, var(--med-blue), var(--dark-blue));
+  color: var(--white);
+  padding:28px 18px;
+  position:fixed;
+  top:0; left:0; bottom:0;
+  box-shadow: 8px 0 24px rgba(10,26,47,0.18);
+  border-right: 1px solid rgba(255,255,255,0.04);
+}
+.logo-wrap {
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-bottom:18px;
+}
+.logo-wrap img {
+  width:60px;
+  height:60px;
+  object-fit:cover;
+  border-radius:12px;
+  border: 2px solid rgba(255,255,255,0.12);
+  box-shadow: 0 6px 18px rgba(16,37,66,0.45);
+}
+.site-title { font-weight:700; font-size:18px; }
+.site-sub { font-size:12px; color:rgba(255,255,255,0.8) }
+
+.nav {
+  margin-top:22px;
+}
+.nav a {
+  display:block;
+  padding:10px 12px;
+  color:var(--white);
+  border-radius:10px;
+  margin-bottom:8px;
+  font-weight:600;
+  transition: all .18s ease;
+}
+.nav a:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateX(6px);
+}
+
+
+.main {
+  margin-left:260px;
+  flex:1;
+  padding:28px 48px;
+}
+
+
+.header-bar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background: linear-gradient(90deg, rgba(78,161,255,0.12), rgba(16,37,66,0.05));
+  padding:14px 18px;
+  border-radius:12px;
+  box-shadow: 0 6px 22px rgba(16,37,66,0.06);
+}
+.header-left {
+  display:flex; gap:12px; align-items:center;
+}
+.header-left img {
+  width:44px; height:44px; border-radius:9px; object-fit:cover;
+  border: 2px solid rgba(78,161,255,0.16);
+}
+.header-title { font-size:20px; font-weight:700; color:var(--dark-blue) }
+.header-cta {
+  display:flex; gap:12px; align-items:center;
+}
+
+
+.btn {
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:10px;
+  background: linear-gradient(90deg,var(--med-blue),var(--dark-blue));
+  color:white;
+  border:none;
+  cursor:pointer;
+  font-weight:700;
+  box-shadow: 0 8px 18px rgba(10,26,47,0.25);
+  transition: transform .16s ease, box-shadow .16s ease;
+}
+.btn:hover { transform: translateY(-4px); box-shadow: 0 18px 38px rgba(10,26,47,0.30); }
+.btn-download { background: linear-gradient(90deg,var(--accent), #3B8CFF); }
+
+
+.btn-ghost {
+  background:transparent;
+  color:var(--med-blue);
+  border:2px solid rgba(16,37,66,0.08);
+}
+
+
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,250,255,0.95));
+  border-radius:14px;
+  padding:28px;
+  margin-top:18px;
+  box-shadow: 0 10px 30px rgba(16,37,66,0.06);
+  border: 1px solid rgba(16,37,66,0.03);
+}
+
+
+.welcome {
+  font-size:34px;
+  font-weight:800;
+  letter-spacing:0.6px;
+  color:var(--dark-blue);
+  text-align:center;
+  margin:26px 0 8px 0;
+  background: linear-gradient(90deg, var(--dark-blue), var(--med-blue));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+
+.profile-photo {
+  width:190px;
+  height:190px;
+  border-radius:18px;
+  object-fit:cover;
+  display:block;
+  margin:14px auto;
+  box-shadow: 0 12px 36px rgba(10,26,47,0.12);
+  border:6px solid var(--white);
+}
+
+
+.neat-table {
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  overflow:hidden;
+  border-radius:12px;
+  box-shadow: 0 12px 28px rgba(16,37,66,0.06);
+}
+.neat-table th, .neat-table td {
+  padding:14px 18px;
+  border-bottom:1px solid rgba(10,26,47,0.06);
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,255,0.98));
+  text-align:left;
+}
+.neat-table th {
+  background: linear-gradient(90deg, var(--med-blue), var(--dark-blue));
+  color:white;
+  font-weight:700;
+}
+
+
+.badge {
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:999px;
+  background: linear-gradient(90deg,var(--accent),#7BCCFF);
+  color:white;
+  font-weight:700;
+  font-size:12px;
+}
+
+
+.gallery {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap:14px;
+  margin-top:16px;
+}
+.gallery img {
+  width:100%;
+  height:140px;
+  object-fit:cover;
+  border-radius:12px;
+  transition: transform .18s ease, box-shadow .18s ease;
+  box-shadow: 0 8px 24px rgba(10,26,47,0.08);
+}
+.gallery img:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(10,26,47,0.18); }
+
+
+.contact-form {
+  display:block;
+  padding:16px;
+  border-radius:12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,255,0.98));
+  border:1px solid rgba(16,37,66,0.04);
+  width:100%;
+}
+.contact-form input, .contact-form textarea {
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border-radius:8px;
+  border:1px solid rgba(16,37,66,0.08);
+  font-size:14px;
+}
+.contact-row {
+  display:flex;
+  gap:12px;
+}
+.contact-row .col { flex:1; }
+
+
+@media (max-width:900px){
+  .sidebar { position:relative; width:100%; height:auto; border-radius:0; display:flex; gap:16px; padding:18px; }
+  .container { flex-direction:column; }
+  .main { margin-left:0; padding:18px; }
+  .header-bar{ flex-direction:column; gap:12px; align-items:flex-start }
+}
+</style>
+
+<body>
+  <div class="container">
+
+    
+    <aside class="sidebar">
+      <div class="logo-wrap">
+        <img src="me.jpg" alt="Logo">
+        <div>
+        <div class="site-title">NUR SYAFIQAH BAITY BINTI MOHD FUAD</div>
+          
+        </div>
+        </div>
+
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="aboutme.html">About Me</a>
+        <a href="education.html">Education</a>
+        <a href="skill.html">Skills</a>
+        <a href="experience.html">Experience</a>
+        <a href="socialmedia.html">Contact</a>
+      </nav>
+
+        <div style="margin-top:18px;">
+        <a class="btn btn-download" href="resume.pdf" download>⬇ Download Resume</a>
+        </div>
+    </aside>
+
+   
+    <main class="main">
+        <div class="header-bar">
+        <div class="header-left">
+        <div>
+        <div class="header-title">Welcome to My Personal Website</div>
+            
+        </div>
+        </div>
+        <div class="header-cta">
+        <a class="btn" href="aboutme.html">Learn More</a>
+        <a class="btn btn-ghost" href="socialmedia.html">Contact Me</a>
+        </div>
+        </div>
+
+      <section class="card" style="text-align:center;">
+        <h1 class="welcome">WELCOME TO MY PERSONAL WEBSITE</h1>
+        <img class="profile-photo" src="me.jpg" alt="Your Photo">
+        <p style="max-width:820px;margin:12px auto 8px auto; color:var(--muted)">
+          Hi, I'm <strong>NUR SYAFIQAH BAITY </strong> — a dedicated and highly motivated <br>individual with strong communication, teamwork, and problem-solving skills. 
+<br>
+I enjoy learning new things, adapting to challenges, and contributing positively <br>in any environment. With a responsible work ethic and a passion for continuous improvement, <br> I am committed to delivering quality results in every task I undertake.
+<br>
+          I enjoy learning frontend development, working on small design projects, and creating <br>content that looks great and works well.
+        </p>
+
+ 
+
+      </section>
+        <div style="margin-top:20px; text-align:center;">
+        <audio controls loop>
+        <source src="music.mp3" type="audio/mpeg">
+          Your browser does not support the audio element. Please add <code>background-music.mp3</code> into the site folder.
+        </audio>
+      </div>
+
+      <footer style="margin-top:28px; text-align:center; color:var(--muted)"> © 2025 [NUR SYAFIQAH BAITY]. All Rights Reserved. <br> Reccommended Browser: Chrome | : 1920x1080. <br> Last Updated: December 10, 2025 </footer>
+    </main>
+
+  </div>
+</body></html>
